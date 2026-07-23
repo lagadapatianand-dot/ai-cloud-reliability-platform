@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-reliability-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: ai-reliability
+
+  template:
+    metadata:
+      labels:
+        app: ai-reliability
+
+    spec:
+      containers:
+      - name: flask-container
+        image: ai-cloud-reliability-app
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
